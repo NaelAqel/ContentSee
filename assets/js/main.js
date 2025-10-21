@@ -7,6 +7,9 @@ import { initFilters, attachFilterChipListeners, filterState } from "./filters.j
 import { injectMeta, generateJSONLD } from './seo.js';
 import { initGA4, initBanner, initSitePhoto, initContacts, initFooter, fadeInPage } from './initializers.js';
 
+// START LOADING DATA IMMEDIATELY (before DOM is ready)
+const dataPromise = loadGalleryData();
+
 // Wait for DOM to load
 document.addEventListener("DOMContentLoaded", async () => {
   const galleryContainer = document.getElementById("gallery");
@@ -16,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // 1. Load all data
-  const { config, data, tags } = await loadGalleryData();
+  const { config, data, tags } = await dataPromise;
   setPageDirection(config);
   setLabels(config);
 
