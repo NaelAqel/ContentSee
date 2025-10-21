@@ -1,0 +1,271 @@
+/* ==========================================================================
+   THEME.CSS — CSS Variables & Theme-Specific Styles
+   ========================================================================== */
+
+/* --------------------------------
+   Root Overrides (Dynamic Theme)
+   -------------------------------- */
+:root {
+  /* Backgrounds */
+  --bg-page: var(--color-secondary);
+  --bg-card: var(--input-bg);
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+  
+  /* Text */
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-light);
+  --text-accent: var(--color-accent);
+  
+  /* Borders */
+  --border-color: var(--color-border);
+  
+  /* Buttons / Tags */
+  --btn-bg: var(--color-primary);
+  --btn-color: var(--color-secondary);
+  --btn-hover-bg: var(--color-accent);
+  --tag-bg-parent: var(--color-primary);
+  --tag-bg-child: var(--color-accent);
+  --tag-color: var(--color-secondary);
+}
+
+/* --------------------------------
+   Body / Page Background
+   -------------------------------- */
+body {
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+
+/* --------------------------------
+   Site Header
+   -------------------------------- */
+#site-banner {
+  width: 100%;
+  overflow: hidden;
+  min-height: 0; /* Collapses when empty */
+}
+
+/* ADD THIS NEW RULE: */
+#site-banner:empty {
+  display: none; /* Completely remove when no banner */
+}
+
+#site-banner .banner-image {
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+  object-fit: cover; 
+  display: block;
+  min-height: 300px; 
+  background-color: var(--color-border); 
+}
+
+.site-photo {
+  width: 180px;
+  height: 180px;
+  min-width: 180px;
+  min-height: 180px;
+  border-radius: 50%;     
+  object-fit: cover;      
+  margin-top: var(--space-md);
+  margin-inline-start: var(--space-md);
+  display: block;
+}
+
+.site-photo[src=""] {
+  visibility: hidden;
+}
+
+#site-banner:not(:empty) ~ .site-photo {
+  margin-top: -90px; /* Half overlap only when banner exists */
+}
+
+.header-text {
+  margin: var(--space-sm) var(--space-md);
+}
+
+#site-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-content {
+  width: 100%;
+  min-height: 280px;
+}
+
+#site-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  direction: inherit;
+}
+
+/* If contacts have links/icons */
+#site-contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+
+/* --------------------------------
+   Cards & Gallery Backgrounds
+   -------------------------------- */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------
+   Overlay / Description on Hover
+   -------------------------------- */
+.card .overlay {
+  background-color: var(--bg-overlay);
+  color: var(--text-primary);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+/* --------------------------------
+   Links & Accent Text
+   -------------------------------- */
+a {
+  color: var(--text-primary);
+}
+
+a:hover {
+  color: var(--text-accent);
+}
+
+/* --------------------------------
+   Buttons
+   -------------------------------- */
+button {
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  border-radius: 4px;
+  padding: 6px 12px;
+  transition: background 0.2s ease;
+  margin: var(--space-xs);
+}
+
+button:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+/* --------------------------------
+   Tag Pills
+   -------------------------------- */
+.media-type,
+.tag-parent,
+.tag-child {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  display: inline-block;
+  white-space: nowrap;
+  margin: var(--space-xs);
+  transition: all 0.2s ease;
+}
+
+.media-type {
+  background-color: var(--tag-bg-parent);
+  color: var(--tag-color);
+}
+
+.tag-parent {
+  background-color: var(--tag-bg-parent);
+  color: var(--tag-color);
+}
+
+.tag-child {
+  background-color: var(--tag-bg-child);
+  color: var(--tag-color);
+}
+
+
+/* --------------------------------
+   Search Bar
+   -------------------------------- */
+.search-row {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+#search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--shadow-accent);
+}
+
+/* --------------------------------
+   Site Footer
+   -------------------------------- */
+.site-footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-top: 1px solid var(--border-color);
+}
+
+
+
+@media (max-width: 480px) {
+  .header-content {
+    min-height: 200px;
+  }
+  .site-photo {
+    width: 80px;
+    height: 80px;
+    min-height: 80px; 
+    min-width: 80px;
+    margin-top: var(--space-sm);
+    aspect-ratio: 1 / 1;
+  }
+  
+  #site-banner:not(:empty) ~ .site-photo {
+    margin-top: -40px;
+  }
+  
+  #site-banner .banner-image {
+    height: 120px;
+    min-height: 120px;
+    max-height: 120px;
+  }
+}

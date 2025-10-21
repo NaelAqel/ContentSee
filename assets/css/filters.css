@@ -1,0 +1,291 @@
+/* ==========================================================================
+   FILTERS.CSS — Layout for Search, Media Type, Parent/Child Filters
+   ========================================================================== */
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;     
+  min-height: 200px;
+  padding: var(--space-md);
+  align-items: flex-start;
+  visibility: visible; 
+  opacity: 1; 
+  transition: opacity 0.3s ease; 
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;  
+  justify-content: flex-start; 
+  margin: var(--space-xs) 0;
+}
+
+.filter-row.clear-row {
+  min-height: 60px;
+}
+
+#media-type-filters,
+#parent-tag-filters,
+#child-tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  align-self: center;
+}
+
+
+/* Active (selected) state */
+.media-type.active,
+.tag-parent.active,
+.tag-child.active {
+  background-color: var(--tag-active-bg) !important;
+  color: var(--tag-active-color) !important;
+}
+
+
+/* Active Filters Summary */
+#active-filters-summary {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: var(--space-sm) var(--space-sm);
+  gap: var(--space-sm); 
+  background-color: var(--filter-summary-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin: var(--space-sm) var(--space-md); /* Normal spacing */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--tag-active-bg);
+  color: var(--tag-active-color);
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.remove-filter {
+  background: none;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-inline-start: 4px;
+}
+
+.remove-filter:hover {
+  opacity: 0.7;
+}
+
+/* Filter Buttons (Media Type, Parent, Child) */
+.filter-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--filter-btn-bg) ;
+  color: var(--filter-btn-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  white-space: nowrap;
+}
+
+button.filter-btn:hover{
+  background-color: var(--filter-btn-hover-bg);
+}
+
+button.filter-btn.active {
+  background-color: var(--filter-btn-active-bg) !important;
+  color: var(--filter-btn-active-color) !important;
+  border-color: var(--filter-btn-active-bg);
+  box-shadow: 0 4px 12px var(--shadow-dark);
+}
+
+button.filter-btn.disabled {
+  background-color: var(--filter-btn-disabled-bg) !important;
+  color: var(--filter-btn-disabled-color) !important;
+  border-color: var(--filter-btn-disabled-border) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.5;
+}
+
+button.filter-btn.disabled:hover {
+  background-color: var(--filter-btn-disabled-bg) !important;
+  color: var(--filter-btn-disabled-color) !important;
+  border-color: var(--filter-btn-disabled-border) !important;
+}
+
+/* Focus state for accessibility */
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Clear button styling */
+#clear-filters-btn {
+  background-color: var(--filter-btn-bg);
+  border: 1px solid var(--color-border);
+  color: var(--filter-btn-color);
+  margin-top: var(--space-sm);
+  padding: 6px 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  min-height: 38px;
+}
+
+#clear-filters-btn:hover:not(:disabled) {
+  background-color: var(--filter-btn-hover-bg);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  transform: translateY(-1px);
+}
+
+/* ================================
+   RESPONSIVE DESIGN FOR FILTERS
+   ================================ */
+
+/* Tablet screens (768px and below) */
+@media (max-width: 768px) {
+  .filters-container {
+    padding: var(--space-md);
+  }
+
+  .filter-row input[type="text"] {
+    flex: 1 1 200px;
+    font-size: 0.95rem;
+  }
+
+  .filter-btn {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  #media-type-filters,
+  #parent-tag-filters,
+  #child-tag-filters {
+    gap: var(--space-xs);
+  }
+}
+
+/* Mobile screens (480px and below) */
+@media (max-width: 480px) {
+  .filters-container {
+    padding: var(--space-md);
+  }
+
+  .filter-row {
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .filter-row input[type="text"] {
+    flex: 1 1 100%;
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .filter-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    flex: 0 1 auto;
+    white-space: nowrap;
+  }
+
+  #media-type-filters,
+  #parent-tag-filters,
+  #child-tag-filters {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: flex-start;
+  }
+
+  .clear-row {
+    width: 100%;
+  }
+
+  #clear-filters-btn {
+    width: 100%;
+  }
+
+  .filter-chip {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  #active-filters-summary {
+    padding: var(--space-sm);
+  }
+}
+
+
+/* Pagination */
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: var(--space-xs) auto;
+  padding: var(--space-xs) 0;
+}
+
+.pagination-prev,
+.pagination-next {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--filter-btn-bg);
+  color: var(--filter-btn-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination-prev:hover:not(:disabled),
+.pagination-next:hover:not(:disabled) {
+  background: var(--filter-btn-hover-bg);
+}
+
+.pagination-prev:disabled,
+.pagination-next:disabled {
+  background: var(--filter-btn-disabled-bg);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pagination-info {
+  color: var(--color-text);
+  font-weight: 500;
+}

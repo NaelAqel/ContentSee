@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="" dir="">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Media Showcase Gallery" />
+        <title id="site-title-tag">Loading...</title>
+
+        <style>
+            body { opacity: 0; }
+            #site-header { min-height: 230px; }
+            .header-content { min-height: 230px; }
+            .main-container { min-height: 600px; opacity: 0; }
+            #site-footer { min-height: 60px; }
+            #site-banner { min-height: 300px; }
+            #site-banner:empty { min-height: 0; display: none; }
+            #site-banner .banner-image { height: 300px; min-height: 300px; max-height: 300px; }
+            .site-photo { min-height: 180px; width: 180px; height: 180px; }
+            .filters-container { min-height: 200px; }
+            .gallery-grid { min-height: 400px; }
+            #pagination { min-height: 50px; }
+            @media (max-width: 480px) {
+                #site-header { min-height: 140px; }
+                .header-content { min-height: 140px; }
+                .site-photo { min-height: 80px; width: 80px; height: 80px; }
+                #site-banner { min-height: 120px; }
+                #site-banner .banner-image { height: 120px; min-height: 120px; max-height: 120px; }
+            }
+        </style>
+
+        <!-- Theme & base styles -->
+        <link rel="stylesheet" href="assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/gallery.css">
+        <link rel="stylesheet" href="assets/css/theme.css">
+        <link rel="stylesheet" href="assets/css/filters.css">
+
+        <!-- Optional favicon -->
+        <link rel="icon" href="favicon.png" type="image/png">
+
+        <!-- Optional GA injection handled by JS -->
+    </head>
+
+    <body>
+
+        <!-- Site Header -->
+        <header id="site-header">
+            <div class="header-content">
+                <div id="site-banner"></div>
+                <img id="site-photo" alt="Site photo" class="site-photo" />
+                <div class="header-text">
+                    <h1 id="site-title">Content See</h1>
+                    <p id="site-description"></p>
+                    <div id="site-contacts"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Filters & Controls -->
+            <section id="filters" class="filters-container">
+                <!-- Search -->
+                <div class="filter-row search-row">
+                    <input type="text" id="search-input" placeholder="Search..." aria-label="Search media" />
+                </div>
+
+                <!-- Media Type Filter -->
+                <div class="filter-row media-type-row">
+                    <span class="filter-label"></span>
+                    <div id="media-type-filters" class="filter-row media-type-row"></div>
+                </div>
+
+                <!-- Parent Tag Filter -->
+                <div class="filter-row parent-tags-row">
+                    <span class="filter-label"></span>
+                    <div id="parent-tag-filters" class="filter-row parent-tags-row"></div>
+                </div>
+
+                <!-- Child Tag Filter -->
+                <div class="filter-row child-tags-row">
+                    <span class="filter-label"></span>
+                    <div id="child-tag-filters" class="filter-row child-tags-row"></div>
+                </div>
+
+                <!-- Clear Filters button now below the three rows -->
+                <div class="filter-row clear-row">
+                    <button id="clear-filters-btn" class="clear-btn"></button>
+                </div>
+            </section>
+
+            <!-- Active Filters Summary -->
+            <div id="active-filters-summary" class="filter-row active-filters-row"></div>
+
+            <!-- Gallery Grid -->
+            <main id="gallery" class="gallery-grid" aria-live="polite">
+                <!-- Cards are rendered dynamically via JS -->
+            </main>
+
+            <!-- Pagination -->
+            <nav id="pagination" class="pagination-container"></nav>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>
+                © <span id="footer-year"></span> 
+                <span id="footer-site-name"></span>. All rights reserved.
+            </p>
+            <p>
+                Template by <a href="https://github.com/naelaqel" target="_blank" rel="noopener">Nael Aqel</a>
+            </p>
+        </footer>
+
+
+        <!-- JS Modules -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+        <script type="module" src="assets/js/main.js"></script>
+
+    </body>
+</html>

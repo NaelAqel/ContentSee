@@ -1,0 +1,254 @@
+/* ==========================================================================
+   GALLERY.CSS — Grid Layout, Cards, Thumbnails, Tags, and Overlay Styles
+   ========================================================================== */
+
+/* --------------------------------
+   Gallery Container
+   -------------------------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md, 1rem);
+  padding: var(--space-md, 1rem);
+  padding: 1rem;
+  width: 100%;
+  min-height: 400px;
+}
+
+
+/* --------------------------------
+   Gallery Cards
+   -------------------------------- */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 380px;
+  box-shadow: 0 2px 4px var(--shadow-light)
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px var(--shadow-medium);
+}
+
+/* --------------------------------
+   Thumbnail
+   -------------------------------- */
+.card .thumbnail {
+  width: 100%;
+  height: 250px;
+  min-height: 250px;
+  object-fit: cover;        /* Images fill the box, preserve aspect ratio */
+  background-color: var(--color-border); /* fallback */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;         /* For generic SVG/icon fallback */
+}
+
+/* If using fallback icon */
+.card .thumbnail img,
+.card .thumbnail svg {
+  width: 80%;
+  height: 95%;
+  object-fit: cover;
+  transition: transform .3s ease;
+  background-color: var(--color-border);
+}
+
+/* --------------------------------
+   Card Content
+   -------------------------------- */
+.card .card-content {
+  padding: var(--space-sm);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title inside card */
+.card .title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+  min-height: 2.4em; 
+  line-height: 1.2em;
+  display: flex;
+  align-items: center;
+}
+
+.card:hover .title {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Tags */
+.card .tags {
+  margin-bottom: var(--space-xs);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card .tag-parent,
+.card .tag-child {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  display: inline-block;
+  color: var(--tag-color);
+}
+
+/* Description overlay */
+.card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  background-color: var(--bg-overlay);
+  color: var(--text-primary);
+  padding: var(--space-sm);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 -4px 12px var(--shadow-medium);
+}
+
+/* Show overlay on hover */
+.card:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --------------------------------
+   Overlay Scrollbar Styling
+   -------------------------------- */
+.card .overlay::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card .overlay::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+/* --------------------------------
+   Card Links
+   -------------------------------- */
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card a:hover {
+  color: var(--text-accent);
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+/* Tablet screens (768px and below) */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+
+  .card {
+    min-height: 340px;
+    height: 340px;
+  }
+  
+  .card .thumbnail {
+    height: 210px;
+    min-height: 210px;
+    max-height: 210px;
+  }
+  
+  .card .thumbnail img,
+  .card .thumbnail svg {
+    height: 100%;
+    max-height: 210px;
+  }
+  
+  .card .card-content {
+    height: 130px;
+    max-height: 130px;
+    overflow: hidden;
+  }
+  
+  .card .overlay {
+    height: 130px;
+  }
+}
+
+/* Mobile screens (480px and below) */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+  }
+
+  .card {
+    min-height: 300px;
+    height: 300px;
+  }
+  
+  .card .thumbnail {
+    height: 180px;
+    min-height: 180px;
+    max-height: 180px;
+  }
+  
+  .card .thumbnail img,
+  .card .thumbnail svg {
+    height: 100%;
+    max-height: 180px;
+  }
+  
+  .card .card-content {
+    height: 120px;
+    max-height: 120px;
+    overflow: hidden;
+  }
+  
+  .card .title {
+    font-size: 0.9rem;
+  }
+  
+  .card .overlay {
+    height: 120px;
+    padding: var(--space-xs);
+    font-size: 0.9rem;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  
+  .card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px var(--shadow-light);
+  }
+  
+  .card:hover .overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

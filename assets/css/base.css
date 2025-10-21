@@ -1,0 +1,223 @@
+/* ==========================================================================
+   BASE.CSS — Resets, Typography, and Root Variables for Dynamic Colors
+   ========================================================================== */
+
+/* --------------------------------
+   Root Variables (Theme / Colors)
+   -------------------------------- */
+:root {
+  /* Primary Palette */
+  --color-primary: #1e90ff;       /* Default blue */
+  --color-secondary: #f0f0f0;     /* Light background / card bg */
+  --color-accent: #ff6f61;        /* Highlight / hover */
+  --color-text: #222222;          /* Main text */
+  --color-text-light: #555555;    /* Secondary text */
+  --color-border: #dddddd;        /* Borders / separators */
+
+  /* Input/Form Colors */
+  --input-bg: #ffffff;
+  --input-text: var(--color-text);
+  
+  /* Summary/Panel Colors */
+  --summary-bg: #f9f9f9;
+
+  /* Tag Component Colors */
+  --tag-bg-parent: #2a2a2a;
+  --tag-color: #ffffff;
+  --tag-active-bg: #4b8bff;
+  --tag-active-color: #ffffff;
+  --tag-hover-bg: #3c3c3c;
+
+  /* Filter Button Colors (dynamic from palette) */
+  --filter-btn-bg: #ffffff;
+  --filter-btn-color: var(--color-text);
+  --filter-btn-hover-bg: color-mix(in srgb, var(--color-primary) 15%, #ffffff);
+  --filter-btn-active-bg: var(--color-primary);
+  --filter-btn-active-color: #ffffff;
+  --filter-btn-disabled-bg: var(--color-border);
+  --filter-btn-disabled-color: var(--color-text-light);
+  --filter-btn-disabled-border: var(--color-border);
+
+  /* Shadow Colors (new) */
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.15);
+  --shadow-accent: rgba(0, 0, 0, 0.2);
+
+  
+  /* Fonts & Typography */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Fira Code", "Courier New", monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 20px;
+  --space-xl: 32px;
+
+  /* Layout */
+  --max-width: 1200px;
+}
+
+/* --------------------------------
+   Global Resets
+   -------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+  display: flex;              
+  justify-content: center;   
+  width: 100%;                
+}
+
+body {
+  display: flex;
+  flex-direction: column;  /* stack header, content, footer */
+  align-items: center;     /* center horizontally */
+  min-height: 100vh;
+  width: 100%;
+  max-width: var(--max-width);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+
+/* --------------------------------
+   Headings
+   -------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+/* --------------------------------
+   Paragraphs & Text
+   -------------------------------- */
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-light);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Lists */
+ul, ol {
+  padding-inline-start: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Buttons (basic reset) */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* Inputs / Textareas */
+input, textarea, select {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: var(--space-sm);
+  background-color: var(--color-secondary);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* --------------------------------
+   Utility Classes
+   -------------------------------- */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+
+/* --------------------------------
+   Direction Handling (LTR/RTL)
+   -------------------------------- */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+}
+
+/* Ensure flexbox respects direction */
+html[dir="rtl"] .filters-container,
+html[dir="rtl"] .filter-row,
+html[dir="rtl"] #media-type-filters,
+html[dir="rtl"] #parent-tag-filters,
+html[dir="rtl"] #child-tag-filters {
+  direction: rtl;
+}
+
+html[dir="ltr"] .filters-container,
+html[dir="ltr"] .filter-row,
+html[dir="ltr"] #media-type-filters,
+html[dir="ltr"] #parent-tag-filters,
+html[dir="ltr"] #child-tag-filters {
+  direction: ltr;
+}
