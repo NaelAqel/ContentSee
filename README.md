@@ -9,30 +9,34 @@ Built for **non-technical users**: configure everything in google sheets files a
 
 ## 🚀 Quick Start
 
-1. **Prepare Media**: 
+1. **Use Template in your Won Page**
+   -  Click **Use this template** at the top of this repository.
+   -  Name the new repository `{your-username}.github.io`, and make sure it is **Public**
+
+2. **Prepare Media**: 
    - Put all your media files in a folder.  
 
-2. **Get the template files**  
+3. **Get the template files**  
    - Make a copy of this [**Google Drive folder**](https://drive.google.com/drive/folders/1JeWgppPCqo7WOcyjWbE-CMRyQ3mbHXrg?usp=sharing) content to your own Google Drive. 
 
-3. **Generate thumbnails**  
+4. **Generate thumbnails**  
    - Open `generate_thumbnails.ipynb` in **Google Colab**.  
    - Follow the notebook instructions to process your media and create thumbnails.  
    - Download the generated `media.zip` and unzip it.
    - Copy the generated filenames for reference to fill in `data`.  
 
-4. **Fill sheets**   
+5. **Fill sheets**   
    - Fill `config` with your site name, description, banner, contacts, and language.  
    - Fill `tags` with categories/tags for your media.  
    - Open `data` and fill the filenames you copied to `file_name` column.
    - Copy the `tags` link to `import_tags` sheet
    - Fill `data` with media titles, tags, links, etc.  
 
-5. **Download and replace**  
+6. **Download and replace**  
    - Download all files (`config.csv`, `tags.csv`, `data.csv`) from Google Drive.  
    - Place them in the `media/` folder.  
 
-6. **Test locally**  
+7. **Test locally**  
    - Run a **local web server** to preview your site (required for JavaScript to work correctly).  
 
    **Step 1: Install Python (if not already installed)**
@@ -77,7 +81,7 @@ Built for **non-technical users**: configure everything in google sheets files a
    5. Verify that thumbnails, banner, description, and contacts display correctly.
  
 
-7. **Push to GitHub**  
+8. **Push to GitHub**  
    - Only upload the full **`media`** folder to the repo.  
 
 > Full step-by-step instructions with screenshots and troubleshooting tips are in [GUIDE.pdf](GUIDE.pdf).
