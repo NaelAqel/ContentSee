@@ -8,7 +8,7 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-md, 1rem);
+  gap: var(--space-lg, 1rem);
   padding: var(--space-md, 1rem);
   padding: 1rem;
   width: 100%;
@@ -168,7 +168,7 @@
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: var(--space-sm);
+    gap: var(--space-lg);
     padding: var(--space-sm);
   }
 
@@ -204,7 +204,7 @@
 @media (max-width: 480px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: var(--space-xs);
+    gap: var(--space-lg);
     padding: var(--space-xs);
   }
 
